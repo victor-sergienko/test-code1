@@ -1,0 +1,9 @@
+a = input("Вводи строку для удаления повторений: ")
+
+list_a = list(a)
+
+seen = {}
+new_list = [seen.setdefault(x, x) for x in list_a if x not in seen]
+
+new_str = ''.join(new_list)
+print('Новая строка без дубликатов: ', new_str)
