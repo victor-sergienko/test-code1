@@ -1,9 +1,14 @@
+# Принимаем значение для удаления повторений
+
 a = input("Вводи строку для удаления повторений: ")
-
 list_a = list(a)
-
 seen = {}
+
+# Удаляем дупликаты из строки
+
 new_list = [seen.setdefault(x, x) for x in list_a if x not in seen]
+
+# Передаем результат в виде обычной строки
 
 new_str = ''.join(new_list)
 print('Новая строка без дубликатов: ', new_str)
