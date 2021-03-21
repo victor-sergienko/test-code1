@@ -1,6 +1,9 @@
 
-from collections import Counter
+# Импортируем модуль счетчика
 
+   from collections import Counter
+
+# Функция вычисления факториала
 
 def func_factorial(n):
     fact = 1
@@ -9,8 +12,7 @@ def func_factorial(n):
         n -= 1
     return fact
 
-#
-# Считаем вообще все символы
+# Функция подсчета кол-ва символов
 
 def func_symbol_count(s):
     f = {}
@@ -18,17 +20,15 @@ def func_symbol_count(s):
         f[i]=f.get(i,0)+1
     return f
 
-# Считаем слова в тексте
-
-
+# Функция подсчета кол-ва слов в тексте
 
 def func_symbol_count(slova):
     count = Counter(slova.split())
     return count
 
-def func_sentences_count(predl):
-    
+# Функция подсчета предложений
 
+def func_sentences_count(predl):
     text = predl
     dot = len([i for i in text.split('. ')])
     vop = len([i for i in text.split('? ')])
@@ -36,12 +36,6 @@ def func_sentences_count(predl):
     dots = len([i for i in text.split('... ')])
     l = dot + vop + voskl - 2
     return l
-
-
-
-
-
-
 
 while True:
     # Проверяем наличие ошибок во введенном значении (значение должно быть числовым и не ломать программу, иначе просим ввести)
@@ -52,9 +46,9 @@ while True:
         continue
     if a == 8:
         exit('Bye!')
-# Вычисление факториала
+        
+    # Вычисление факториала
     elif a == 1:
-
         while True:
             try:
                 n = int(input("введите число для вычисления факториала: "))
@@ -63,27 +57,22 @@ while True:
                 continue    
             k = n
             factorial = func_factorial(n)
-                       
             print('факториал числа ', k, 'равен ', factorial)
             break
-# Подсчет символов
-
+            
+    # Подсчет символов
     elif a == 2:
-
         while True:
             try:
                 input_string = str(input("введите строку для подсчета символов: "))
             except:
                 print('Вы ввели неверное значение. Попробуйте еще раз. ')
                 continue    
-            
             p = func_symbol_count(input_string)
-                       
             print('Количество вхождений символов в Вашем тексте:  ', p)
             break
 
-# Подсчет слов в тексте
-
+    # Подсчет слов в тексте
     elif a == 3:
         while True:    
             slova = input('введите текст: ')
@@ -91,12 +80,11 @@ while True:
             print(wordcount, 'слов в вашем тексте')
             break
 
-# Подсчет предложений в тексте
-
+    # Подсчет предложений в тексте
     elif a == 4:
         while True: 
             predl = input('введите текст: ')
             sentcount = func_sentences_count(predl)
             print('Колличество предложений в вашем тексте: ', sentcount)
             break
-        
+       
