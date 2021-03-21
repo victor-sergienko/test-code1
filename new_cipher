@@ -1,0 +1,76 @@
+# Файлы для обработки. 
+
+FILENAME_IN = './text.txt'  # file to import text
+FILENAME_OUT = './text_out.txt'  # file to write result
+
+
+# Функция шифрования
+def crypt(message, key):
+    result = bytearray()
+    for i in range(len(message)):
+        p = int(message[i])
+        print('p=', p)
+        t = ord(key[i]) 
+        print('t=', t)
+        result.append(p ^ t)
+    return result
+
+
+
+
+# Работа с файлами
+def xor_block_crypt():
+    key = input("Работа с файлом, введите ключ:")
+    with open(FILENAME_IN, 'rb') as file_in, open(FILENAME_OUT, 'wb') as file_out:
+        while True:
+            data = file_in.read(len(key))
+            if data:
+                result = crypt(data, key)
+                file_out.write(result)
+            else:
+                break
+    print("Готово")
+
+# Работа с файлами для дешифровки
+def xor_block_decrypt():
+    key = input("Работа с файлом, введите ключ:")
+    with open(FILENAME_OUT, 'rb') as file_in, open(FILENAME_IN, 'wb') as file_out:
+        while True:
+            data = file_in.read(len(key))
+            if data:
+                result = crypt(data, key)
+                file_out.write(result)
+            else:
+                break
+    print("Готово")
+
+
+    
+# Подсказка 
+print("Варианты ввода: 1 - зашифровать, 2 - расшифровать сообщение, 3 - выход ")
+
+while True:
+    # Проверяем наличие ошибок во введенном значении (значение должно быть числовым и не ломать программу, иначе просим ввести)
+    try:
+        a = int(input("Что вы хотите сделать? ")) 
+    except:
+        print('Вы ввели неверное значение. Введите любое из предложенных значений: \n 1 - зашифровать, 2 - расшифровать сообщение, 3 - выход ')
+        continue
+    # При успешном прохождении проверки, выполняем функцию в соответсвтии с выбором
+    if a == 1: 
+        strg = xor_block_crypt()
+              
+
+
+    elif a == 2: 
+        strg = xor_block_decrypt()
+
+    elif a == 3:
+        exit("Всего хорошего!")
+    # При несоответствии числа введенным вариантам, отправляем на повторный выбор операции
+    else:
+        print('Вы ввели неверное значение. Введите любое из предложенных значений: \n 1 - зашифровать, 2 - расшифровать сообщение, 3 - выход ')
+        continue
+
+
+
